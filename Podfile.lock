@@ -1,0 +1,36 @@
+PODS:
+  - Font (0.2.0)
+  - Log (1.0)
+  - PureLayout (3.0.2)
+  - Reveal-SDK (3)
+  - SlackTextViewController (1.9.5)
+  - Then (2.0.0)
+
+DEPENDENCIES:
+  - Font
+  - Log
+  - PureLayout
+  - Reveal-SDK
+  - SlackTextViewController (from `https://github.com/slackhq/SlackTextViewController.git`)
+  - Then
+
+EXTERNAL SOURCES:
+  SlackTextViewController:
+    :git: https://github.com/slackhq/SlackTextViewController.git
+
+CHECKOUT OPTIONS:
+  SlackTextViewController:
+    :commit: 0b20b830c6c389c7c553cc264980a16d6de79ca1
+    :git: https://github.com/slackhq/SlackTextViewController.git
+
+SPEC CHECKSUMS:
+  Font: 29387bb29b38d0551e99119f8e146cac0f9537ee
+  Log: 5e368c9528db07517d18d2d04ff5fe2b6f5a1e21
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  Reveal-SDK: cad54352e23854083e3917ddf665dc0fe7781c53
+  SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
+  Then: 460074ffe907de3536d5e88f189dac5ef7cf0869
+
+PODFILE CHECKSUM: 2a3a9b39fc79ca9e71908cd4fe285619c4fda619
+
+COCOAPODS: 1.1.0.beta.2
