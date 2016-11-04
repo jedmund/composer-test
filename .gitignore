@@ -6,6 +6,7 @@
 build/
 DerivedData/
 Pods/
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -16,6 +17,7 @@ Pods/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+*.xcworkspace/
 
 ## Other
 *.moved-aside
