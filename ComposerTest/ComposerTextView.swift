@@ -14,6 +14,7 @@ import UIKit
 class ComposerTextView: UIView {
     // MARK: View properties
     let textView: MaitsuTextView = MaitsuTextView().then {
+        $0.isScrollEnabled = false
         $0.textSize = .medium
         $0.textContainer.lineFragmentPadding = 0
         $0.textContainerInset = .zero
