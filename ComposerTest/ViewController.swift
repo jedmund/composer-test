@@ -6,12 +6,15 @@
 //  Copyright © 2016 Justin Edmund. All rights reserved.
 //
 
+import SlackTextViewController
 import UIKit
 
-class ViewController: UIViewController, Notifiable {
+class ViewController: UIViewController, SLKTextViewDelegate, Notifiable {
 
     fileprivate var didSetupConstraints = false
     var bottomConstraint: NSLayoutConstraint?
+    var heightConstraint: NSLayoutConstraint?
+    let defaultHeight: CGFloat = 50
     
     let composerView = ComposerView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +28,8 @@ class ViewController: UIViewController, Notifiable {
         
         self.register()
         
+        self.composerView.contentField.textView.delegate = self
+        
         let image1 = UIImageView(image: UIImage(named: "utomaru1"))
         let image2 = UIImageView(image: UIImage(named: "utomaru2"))
         let image3 = UIImageView(image: UIImage(named: "utomaru3"))
@@ -37,10 +42,17 @@ class ViewController: UIViewController, Notifiable {
     }
 
     override func updateViewConstraints() {
+        Log.info("Updating view constraints...")
+        
         if !self.didSetupConstraints {
             self.composerView.autoPinEdge(toSuperviewMargin: .top)
             self.composerView.autoPinEdge(toSuperviewEdge: .leading)
             self.composerView.autoPinEdge(toSuperviewEdge: .trailing)
+            
+            if (self.heightConstraint == nil) {
+                self.heightConstraint = self.composerView.contentField.textView.heightAnchor.constraint(equalToConstant: self.defaultHeight)
+                self.heightConstraint?.isActive = true
+            }
             
             if (self.bottomConstraint == nil) {
                 self.bottomConstraint = self.composerView.autoPin(toBottomLayoutGuideOf: self, withInset: Global.Sizes.SpacingUnit)
@@ -49,7 +61,21 @@ class ViewController: UIViewController, Notifiable {
             self.didSetupConstraints = true
         }
         
+        Log.info("Height constraint: \(self.heightConstraint)")
+        
         super.updateViewConstraints()
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+//        textView.sizeToFit()
+//        textView.layoutIfNeeded()
+        
+        let bounds: CGSize = CGSize(width: textView.frame.size.width, height: CGFloat.greatestFiniteMagnitude)
+        let size: CGSize = textView.sizeThatFits(bounds)
+        let height: CGFloat = ceil(size.height)
+
+        self.heightConstraint?.constant = (height < self.defaultHeight) ? self.defaultHeight : height
+        self.view.setNeedsUpdateConstraints()
     }
 }
 
