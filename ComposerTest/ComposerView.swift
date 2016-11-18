@@ -22,13 +22,6 @@ class ComposerView: UIView {
         $0.isUserInteractionEnabled = true
         $0.translatesAutoresizingMaskIntoConstraints = true
     }
-    
-    let stackView: UIStackView = UIStackView().then {
-        $0.axis = .vertical
-        $0.distribution = .fill
-        $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
     let contentField: ComposerTextView = ComposerTextView().then {
         $0.lineEnabled = false
         $0.textView.placeholder = "Please type as much text as you can in this text view."
@@ -54,9 +47,8 @@ class ComposerView: UIView {
         self.init(frame: CGRect.zero)
         
         // Add subviews
-        self.stackView.addArrangedSubview(self.contentField)
-        self.stackView.addArrangedSubview(self.mediaView)
-        self.scrollView.addSubview(self.stackView)
+        self.scrollView.addSubview(self.contentField)
+        self.scrollView.addSubview(self.mediaView)
         self.addSubview(self.scrollView)
         
         // Add validation rules
@@ -82,10 +74,6 @@ class ComposerView: UIView {
         if !self.didSetupConstraints {
             // Setup initial constraints
             self.scrollView.autoPinEdgesToSuperviewEdges()
-            self.stackView.autoPinEdgesToSuperviewEdges()
-            
-            self.stackView.autoMatch(.height, to: .height, of: self)
-            self.stackView.autoMatch(.width, to: .width, of: self)
             
             self.contentField.autoPinEdge(.leading, to: .leading, of: self)
             self.contentField.autoPinEdge(.trailing, to: .trailing, of: self)
