@@ -77,7 +77,7 @@ class ComposerView: UIView {
             
             self.contentField.autoPinEdge(.leading, to: .leading, of: self)
             self.contentField.autoPinEdge(.trailing, to: .trailing, of: self)
-            self.contentField.autoPinEdge(toSuperviewEdge: .top)
+            self.contentField.autoPinEdge(toSuperviewEdge: .top, withInset: 32.0)
 
             self.mediaView.autoPinEdge(.leading, to: .leading, of: self)
             self.mediaView.autoPinEdge(.trailing, to: .trailing, of: self)
