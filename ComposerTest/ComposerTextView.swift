@@ -36,9 +36,8 @@ class ComposerTextView: UIView {
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.addSubview(self.textView)
-        self.addSubview(self.error)
+        // self.addSubview(self.error)
         
         if lineEnabled {
             self.addSubview(self.line)
@@ -59,12 +58,14 @@ class ComposerTextView: UIView {
             self.textView.autoPinEdge(toSuperviewEdge: .top, withInset: spacer2)
             self.textView.autoPinEdge(toSuperviewEdge: .leading, withInset: spacer2)
             self.textView.autoPinEdge(toSuperviewEdge: .trailing, withInset: spacer2)
+            self.textView.autoPinEdge(toSuperviewEdge: .bottom, withInset: spacer2)
             
-            self.error.autoPinEdge(.top, to: .bottom, of: self.textView)
-            self.error.autoPinEdge(toSuperviewEdge: .leading, withInset: spacer2)
-            self.error.autoPinEdge(toSuperviewEdge: .trailing, withInset: spacer2)
+            // self.error.autoPinEdge(.top, to: .bottom, of: self.textView)
+            // self.error.autoPinEdge(toSuperviewEdge: .leading, withInset: spacer2)
+            // self.error.autoPinEdge(toSuperviewEdge: .trailing, withInset: spacer2)
             
-            if lineEnabled {
+            /* 
+             if lineEnabled {
                 self.line.autoPinEdge(.top, to: .bottom, of: self.error, withOffset: spacer2)
                 self.line.autoPinEdge(toSuperviewEdge: .leading)
                 self.line.autoPinEdge(toSuperviewEdge: .trailing)
@@ -78,7 +79,7 @@ class ComposerTextView: UIView {
                 self.error.autoSetContentHuggingPriority(for: .horizontal)
                 self.error.autoSetContentHuggingPriority(for: .vertical)
             })
-            
+            */
             
             self.didSetupConstraints = true
         }
