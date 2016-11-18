@@ -87,8 +87,13 @@ class ComposerView: UIView {
             self.stackView.autoMatch(.height, to: .height, of: self)
             self.stackView.autoMatch(.width, to: .width, of: self)
             
-            self.mediaView.autoPinEdge(toSuperviewEdge: .leading)
-            self.mediaView.autoPinEdge(toSuperviewEdge: .trailing)
+            self.contentField.autoPinEdge(.leading, to: .leading, of: self)
+            self.contentField.autoPinEdge(.trailing, to: .trailing, of: self)
+            self.contentField.autoPinEdge(toSuperviewEdge: .top)
+
+            self.mediaView.autoPinEdge(.leading, to: .leading, of: self)
+            self.mediaView.autoPinEdge(.trailing, to: .trailing, of: self)
+            self.mediaView.autoPinEdge(.top, to: .bottom, of: self.contentField)
             self.mediaView.autoSetDimension(.height, toSize: self.mediaView.height)
             
             NSLayoutConstraint.autoSetPriority(UILayoutPriorityDefaultHigh, forConstraints: {
